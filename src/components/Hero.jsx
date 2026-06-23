@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../translations";
 
 const Hero = () => {
   const navigate = useNavigate();
 
+  const { language, setLanguage } =
+    useContext(LanguageContext);
+
+  const t = translations[language];
+
   const startMusic = () => {
-    const music = document.getElementById("weddingMusic");
+    const music =
+      document.getElementById("weddingMusic");
 
     if (music) {
       music.play();
@@ -30,8 +38,34 @@ const Hero = () => {
         textAlign: "center",
         color: "#fff",
         padding: "20px",
+        position: "relative",
       }}
     >
+      {/* Language Switch */}
+      <button
+        onClick={() =>
+          setLanguage(
+            language === "en" ? "kn" : "en"
+          )
+        }
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "20px",
+          padding: "10px 20px",
+          borderRadius: "30px",
+          border: "none",
+          cursor: "pointer",
+          background: "#FFD700",
+          color: "#000",
+          fontWeight: "bold",
+        }}
+      >
+        {language === "en"
+          ? "ಕನ್ನಡ"
+          : "English"}
+      </button>
+
       <div
         style={{
           maxWidth: "800px",
@@ -51,7 +85,7 @@ const Hero = () => {
             fontWeight: "600",
           }}
         >
-          Together With Their Families
+          {t.welcome}
         </motion.p>
 
         <motion.h1
@@ -63,7 +97,6 @@ const Hero = () => {
             fontFamily: "cursive",
             marginBottom: "5px",
             color: "#fff",
-            textShadow: "3px 3px 15px rgba(0,0,0,0.8)",
           }}
         >
           Sunitha
@@ -76,7 +109,6 @@ const Hero = () => {
           style={{
             fontSize: "2rem",
             color: "#FFD700",
-            margin: "10px 0",
           }}
         >
           &
@@ -91,7 +123,6 @@ const Hero = () => {
             fontFamily: "cursive",
             marginBottom: "25px",
             color: "#fff",
-            textShadow: "3px 3px 15px rgba(0,0,0,0.8)",
           }}
         >
           Vinod Kumar
@@ -106,7 +137,7 @@ const Hero = () => {
             marginBottom: "20px",
           }}
         >
-          Request The Pleasure Of Your Company
+          {t.request || "Request The Pleasure Of Your Company"}
         </motion.p>
 
         <motion.p
@@ -129,17 +160,16 @@ const Hero = () => {
           style={{
             padding: "16px 40px",
             background:
-              "linear-gradient(135deg, #FFD700, #D4AF37)",
+              "linear-gradient(135deg,#FFD700,#D4AF37)",
             color: "#fff",
             border: "none",
             borderRadius: "50px",
             cursor: "pointer",
             fontSize: "1.1rem",
             fontWeight: "bold",
-            boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
           }}
         >
-          Open Invitation ✨
+          {t.invitation} ✨
         </motion.button>
 
         <motion.p
@@ -152,7 +182,8 @@ const Hero = () => {
             color: "#ddd",
           }}
         >
-          Click to begin the wedding journey ❤️
+          {t.footerText ||
+            "Click to begin the wedding journey ❤️"}
         </motion.p>
       </div>
     </section>
