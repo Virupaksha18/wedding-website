@@ -5,6 +5,16 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
   const navigate = useNavigate();
 
+  const startMusic = () => {
+    const music = document.getElementById("weddingMusic");
+
+    if (music) {
+      music.play();
+    }
+
+    navigate("/countdown");
+  };
+
   return (
     <section
       style={{
@@ -115,7 +125,7 @@ const Hero = () => {
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate("/countdown")}
+          onClick={startMusic}
           style={{
             padding: "16px 40px",
             background:

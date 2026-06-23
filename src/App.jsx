@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import {useEffect} from "react";
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
 import Invitation from "./components/Invitation";
@@ -15,8 +15,6 @@ import Haldi from "./components/Haldi";
 import Reception from "./components/Reception";
 import Wedding from "./components/Wedding";
 
-
-
 function InvitationPage() {
   return (
     <>
@@ -30,8 +28,44 @@ function InvitationPage() {
 }
 
 function App() {
+  useEffect(() => {
+    const audio = document.getElementById("weddingMusic");
+
+    const playlist = [
+      "song1.mp3",
+      "song2.mp3",
+      "song3.mp3",
+      "song4.mp3",
+    ];
+
+    let currentSong = 0;
+
+    if (audio) {
+      audio.src = playlist[currentSong];
+
+      audio.addEventListener("ended", () => {
+        currentSong++;
+
+        if (currentSong >= playlist.length) {
+          currentSong = 0;
+        }
+
+        audio.src = playlist[currentSong];
+        audio.play();
+      });
+    }
+  }, []);
   return (
     <BrowserRouter>
+
+      {/* Global Wedding Music
+      <audio
+        id="weddingMusic"
+        src="/music.mp3"
+        loop
+      /> */}
+      <audio id="weddingMusic" />
+
       <Routes>
         {/* Hero Page */}
         <Route path="/" element={<Hero />} />
@@ -40,23 +74,47 @@ function App() {
         <Route path="/countdown" element={<Countdown />} />
 
         {/* Main Invitation Website */}
-        <Route path="/invitation" element={<InvitationPage />} />
+        <Route
+          path="/invitation"
+          element={<InvitationPage />}
+        />
 
-        {/* Wedding Events Page */}
+        {/* Wedding Events */}
         <Route path="/events" element={<Events />} />
-                                                                                                                                                                                                                                         
-        {/* Invitation Card Page */}
+
+        {/* Invitation Card */}
         <Route
           path="/invitation-card"
           element={<InvitationCard />}
         />
-        <Route path="/engagement" element={<Engagement />} />
-         <Route path="/mehendi" element={<Mehendi />}
-          />
-          <Route path="/wedding" element={<Wedding />} />
-          <Route path="/reception" element={<Reception />} />
-          <Route path="/haldi" element={<Haldi />} />
-        {/* 404 Page */}
+
+        {/* Event Pages */}
+        <Route
+          path="/engagement"
+          element={<Engagement />}
+        />
+
+        <Route
+          path="/mehendi"
+          element={<Mehendi />}
+        />
+
+        <Route
+          path="/haldi"
+          element={<Haldi />}
+        />
+
+        <Route
+          path="/wedding"
+          element={<Wedding />}
+        />
+
+        <Route
+          path="/reception"
+          element={<Reception />}
+        />
+
+        {/* 404 */}
         <Route
           path="*"
           element={
