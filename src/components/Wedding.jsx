@@ -185,7 +185,7 @@ const Wedding = () => {
 
             <div>
               <a
-                href="YOUR_WEDDING_DRIVE_LINK"
+                href="https://drive.google.com/drive/folders/1LZB0sdUTWDmZcTEcZGhSEI4v9cjyxJYD"
                 target="_blank"
                 rel="noreferrer"
               >

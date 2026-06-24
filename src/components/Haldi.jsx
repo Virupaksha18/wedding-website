@@ -151,7 +151,7 @@ const Haldi = () => {
 
             <div>
               <a
-                href="YOUR_HALDI_DRIVE_LINK"
+                href="https://drive.google.com/drive/folders/1Tx1hSxTTLOMZ6uxcP_jgpY6661v7JXG3"
                 target="_blank"
                 rel="noreferrer"
               >

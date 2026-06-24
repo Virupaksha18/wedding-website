@@ -157,7 +157,7 @@ const Mehendi = () => {
 
             <div>
               <a
-                href="YOUR_MEHENDI_DRIVE_LINK"
+                href="https://drive.google.com/drive/folders/1MdYLgm2yhIIA2GhfxQ1SnbTxN0brDGec"
                 target="_blank"
                 rel="noreferrer"
               >
